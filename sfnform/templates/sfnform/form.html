@@ -1,0 +1,141 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>SAPFLUXNET form</title>
+		<link href="{% static 'sfnform/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+		<link href="{% static 'sfnform/base.css' %}" rel="stylesheet" media="screen">
+		<link rel="shortcut icon" type="image/png" href="{% static 'sfnform/media/fluxnet.ico' %}"/>
+	</head>
+	<body>
+		<div class="page-header">
+  		<img class="img-responsive" src="{% static 'sfnform/media/fluxnet_logo_2.jpg' %}">
+		</div>
+		<h1>SAPFLUXNET: A global database of sap flow measurements</h1>
+		<h2>Meta-data portal</h2>		
+		<h3>SAPFLUXNET is an initiative aiming at compiling a global database of sap flow measurements in woody plants.</h3>
+		<ul>
+			<li>The database will allow new exciting analyses at the global scale and it will be first made available to all data contributors and then to the entire scientific community.</li>
+			<li>SAPFLUXNET begins as a 3-year project starting in October 2015 at CREAF and funded by the Spanish Ministry of Economy and Competitiveness MINECO (Grant Nº CGL2014-55883-JIN).</li>
+			<li>In a first stage, we would like to have an idea of the amount of data available globally, and the number of potential contributors to SAPFLUXNET.</li>
+			<li>We kindly ask that you <strong>fill the form below</strong> if you have measured <strong>sap flow during at least one year/growing season, in a field setting (including orchards, but excluding studies in greenhouses)</strong>. Let us know if you would be willing to <strong>contribute to SAPFLUXNET</strong>.</li>
+			<li>The <strong>data collection period is projected to begin in early 2016</strong>. More details on the <strong>data policy will be available then</strong>. If at this stage you are unsure whether to contribute because you would like to know the precise terms of the data policy, please specify this in the form (i.e. 'Yes, conditioned on the data policy terms').</li>
+			<li>Do not hesitate to contact us (<a href="mailto:r.poyatos@creaf.uab.es" target="_top">Rafael Poyatos</a>) for more information</li>
+		</ul>
+		<form action="/form/" method="post">
+			<div class="container-fluid">
+				{% csrf_token %}			
+				<!--{{ form.as_p }}-->
+				{{ form.non_field_errors }}			
+				<p class="section"><strong>1. Contact</strong><p>			
+				<div class="row">								
+					<div class="text-right col-xs-1"><label for="{{ form.first_name.id_for_label }}">First name:</label></div>
+	    		<div class="col-xs-3">{{ form.first_name }}</div>    		
+					<div class="col-xs-2">{{ form.first_name.errors }}</div>
+				</div>			
+				<div class="row">
+					<div class="text-right col-xs-1"><label for="{{ form.last_name.id_for_label }}">Last name:</label></div>
+					<div class="col-xs-3">{{ form.last_name }}</div>				
+					<div class="col-xs-2">{{ form.last_name.errors }}</div>
+				</div>
+				<div class="row">
+					<div class="text-right col-xs-1"><label for="{{ form.affiliation.id_for_label }}">Affiliation:</label></div>
+					<div class="col-xs-3">{{ form.affiliation }}</div>				
+					<div class="col-xs-2">{{ form.affiliation.errors }}</div>
+				</div>
+				<div class="row">
+	    		<div class="text-right col-xs-1"><label for="{{ form.address.id_for_label }}">Address:</label></div>
+					<div class="col-xs-3">{{ form.address }}</div>				
+					<div class="col-xs-2">{{ form.address.errors }}</div>
+				</div>
+				<div class="row">
+	    		<div class="text-right col-xs-1"><label for="{{ form.email.id_for_label }}">Email:</label></div>
+					<div class="col-xs-3">{{ form.email }}</div>				
+					<div class="col-xs-2">{{ form.email.errors }}</div>
+				</div>						
+				<p class="section"><strong>2. Site metadata</strong><p>
+				<div class="row">
+	    		<div class="text-right col-xs-1"><label for="{{ form.site_name.id_for_label }}">Site name:</label></div>
+					<div class="col-xs-3">{{ form.site_name }}</div>				
+					<div class="col-xs-2">{{ form.site_name.errors }}</div>
+				</div>
+				<div class="row">    		
+	    		<div class="text-right col-xs-1"><label for="{{ form.country.id_for_label }}">Country:</label></div>
+					<div class="col-xs-3">{{ form.country }}</div>				
+					<div class="col-xs-2">{{ form.country.errors }}</div>
+				</div>
+				<div class="row">    		
+	    		<div class="text-right col-xs-1"><label for="{{ form.latitude.id_for_label }}">Latitude:</label></div>
+					<div class="col-xs-2">{{ form.latitude }}</div>
+					<div class="col-xs-1"></div>
+					<div class="col-xs-2">{{ form.latitude.errors }}</div>
+				</div>
+				<div class="row">    		
+	    		<div class="text-right col-xs-1"><label for="{{ form.longitude.id_for_label }}">Longitude:</label></div>
+					<div class="col-xs-2">{{ form.longitude }}</div>
+					<div class="col-xs-1"></div>
+					<div class="col-xs-2">{{ form.longitude.errors }}</div>
+				</div>
+				<div class="row">    		
+	    		<div class="text-right col-xs-1"><label for="{{ form.growth_condition.id_for_label }}">Growth condition:</label></div>
+					<div class="col-xs-3">{{ form.growth_condition }}</div>				
+					<div class="col-xs-2">{{ form.growth_condition.errors }}</div>
+				</div>
+				<p class="section"><strong>3. Experiment metadata</strong><p>
+				<div class="row">
+					<div class="text-right col-xs-1"><label>Species (scientific name):</label></div>
+					<div class="col-xs-3"><input class="form-control" type="text" id="entrada_sp"></div>
+					<div class="col-xs-1"><button type="button" id="afegir_sp" onclick="addSp()"><span class="glyphicon glyphicon-plus"></span></button></div>
+					<div class="col-xs-1"><span>Click to add more species...</span></div>
+					<div class="col-xs-2">{{ form.species.errors }}</div>    		
+					{{ form.species.as_hidden }}				
+				</div>			
+				<div id="sp_list" class="row">					
+						<ul class="species">
+						</ul>
+				</div>
+				<div class="row">    		
+	    		<div class="text-right col-xs-1"><label for="{{ form.aprox_years_growing_seasons.id_for_label }}">Approximate number of years/growing seasons:</label></div>
+					<div class="col-xs-3">{{ form.aprox_years_growing_seasons }}</div>								
+					<div class="col-xs-2">{{ form.aprox_years_growing_seasons.errors }}</div>
+				</div>
+				<div class="row">
+	    		<div class="text-right col-xs-1"><label for="{{ form.aprox_numbers_tree_species.id_for_label }}">Approximate number of trees per species:</label></div>
+					<div class="col-xs-3">{{ form.aprox_numbers_tree_species }}</div>								
+					<div class="col-xs-2">{{ form.aprox_numbers_tree_species.errors }}</div>
+				</div>
+				<div class="row">
+	    		<div class="text-right col-xs-1"><label for="{{ form.sap_flow_method.id_for_label }}">Sap flow method:</label></div>
+					<div class="col-xs-3">{{ form.sap_flow_method }}</div>								
+					<div class="col-xs-2">{{ form.sap_flow_method.errors }}</div>
+				</div>
+				<div class="row">
+	    		<div class="text-right col-xs-1"><label for="{{ form.meteo_data_available.id_for_label }}">Meteorological data available:</label></div>
+					<div class="col-xs-3">{{ form.meteo_data_available }}</div>												
+					<div class="col-xs-2">{{ form.meteo_data_available.errors }}</div>
+				</div>
+				<div class="row">
+	    		<div class="text-right col-xs-1"><label for="{{ form.willing_to_contribute.id_for_label }}">Would you be willing to contribute with your data to SAPFLUXNET?:</label></div>
+					<div class="col-xs-3">{{ form.willing_to_contribute }}</div>				
+					<div class="col-xs-2">{{ form.willing_to_contribute.errors }}</div>
+				</div>			
+				<p class="section"><strong>4. Spam protection</strong><p>
+				<div class="row">
+	    		<div class="text-right col-xs-1"><label for="{{ form.captcha.id_for_label }}">Please type the characters you see in the picture:</label></div>
+					<div class="col-xs-3">{{ form.captcha }}</div>				
+					<div class="col-xs-2">{{ form.captcha.errors }}</div>
+				</div>
+				<div class="sendbutton row">
+					<input class="col-xs-2 col-xs-offset-1 btn btn-primary" type="submit" value="Send/Save">
+				</div>
+			</div>
+		</form>
+	<!-- jQuery -->     
+  <script src="{% static 'sfnform/bootstrap/js/jquery.js' %}"></script>
+
+  <!-- Bootstrap Core JavaScript -->    
+  <script src="{% static 'sfnform/bootstrap/js/bootstrap.min.js' %}"></script>
+  <!-- Species mini form functions -->
+  <script src="{% static 'sfnform/javascript/form_species.js' %}"></script>  
+	</body>
+</html>
