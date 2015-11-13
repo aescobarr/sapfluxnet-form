@@ -56,8 +56,9 @@ class MetadataForm(models.Model):
 	latitude = models.DecimalField(max_digits=9,decimal_places=6)
 	longitude = models.DecimalField(max_digits=9,decimal_places=6)
 	growth_condition = models.CharField(max_length=100,choices=GROWTH_CONDITION_CHOICES)
-	species = models.CharField(max_length=500)
-	aprox_years_growing_seasons = models.CharField(max_length=40)
+	species = models.CharField(max_length=500)	
+	#aprox_years_growing_seasons = models.CharField(max_length=40)
+	aprox_years_growing_seasons = models.IntegerField()
 	aprox_numbers_tree_species = models.CharField(max_length=100,choices=NUMBER_TREES_CHOICES)
 	sap_flow_method = models.CharField(max_length=100,choices=SAP_FLOW_METHOD_CHOICES)
 	meteo_data_available = models.CharField(max_length=100,choices=YES_NO_CHOICES)
@@ -80,6 +81,7 @@ class MetadataFormForm(ModelForm):
 			'longitude',
 			'growth_condition',
 			'species',
+			#'aprox_years_growing_seasons',
 			'aprox_years_growing_seasons',
 			'aprox_numbers_tree_species',
 			'sap_flow_method',
@@ -97,6 +99,7 @@ class MetadataFormForm(ModelForm):
 			'latitude': TextInput(attrs={'class':'form-control'}),
 			'longitude': TextInput(attrs={'class':'form-control'}),
 			'growth_condition': Select(attrs={'class':'form-control'}),
+			#'aprox_years_growing_seasons': TextInput(attrs={'class':'form-control'}),
 			'aprox_years_growing_seasons': TextInput(attrs={'class':'form-control'}),
 			'aprox_numbers_tree_species': Select(attrs={'class':'form-control'}),
 			'sap_flow_method': Select(attrs={'class':'form-control'}),
