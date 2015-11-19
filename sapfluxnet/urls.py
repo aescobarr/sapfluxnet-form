@@ -21,6 +21,6 @@ from django.views.generic import TemplateView
 
 urlpatterns = [	
 	url(r'^form/$', 'sfnform.views.built_form', name='form'),	
-	url(r'^thanks/$', TemplateView.as_view(template_name="sfnform/thanks.html")),
+	url(r'^thanks/$', TemplateView.as_view(template_name="sfnform/thanks.html"), name='thanks'),
 	url(r'^captcha/', include('captcha.urls')),
 ]

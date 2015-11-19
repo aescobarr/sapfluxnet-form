@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from models import MetadataFormForm
 from datetime import datetime
@@ -22,7 +23,8 @@ def built_form(request):
 			metadata.save()
 			# ...
 			# redirect to a new URL:
-			return HttpResponseRedirect('/thanks')
+			#return HttpResponseRedirect('/thanks')
+			return HttpResponseRedirect(reverse('thanks'))
 	# if a GET (or any other method) we'll create a blank form
 	else:
 		form = MetadataFormForm()
