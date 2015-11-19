@@ -22,7 +22,8 @@
 			<li>The <strong>data collection period is projected to begin in early 2016</strong>. More details on the <strong>data policy will be available then</strong>. If at this stage you are unsure whether to contribute because you would like to know the precise terms of the data policy, please specify this in the form (i.e. 'Yes, conditioned on the data policy terms').</li>
 			<li>Do not hesitate to contact us (<a href="mailto:r.poyatos@creaf.uab.es" target="_top">Rafael Poyatos</a>) for more information</li>
 		</ul>
-		<form action="/form/" method="post">
+		<!--<form action="/form/" method="post">-->
+		<form action="{% url 'form' %}" method="post">
 			<div class="container-fluid">
 				{% csrf_token %}			
 				<!--{{ form.as_p }}-->
