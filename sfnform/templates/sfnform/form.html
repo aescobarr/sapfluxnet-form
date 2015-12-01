@@ -66,13 +66,13 @@
 					<div class="col-xs-2">{{ form.country.errors }}</div>
 				</div>
 				<div class="row">    		
-	    		<div class="text-right col-xs-1"><label for="{{ form.latitude.id_for_label }}">Latitude:</label></div>
+	    		<div class="text-right col-xs-1"><label for="{{ form.latitude.id_for_label }}">Latitude (in degrees, decimal format):</label></div>
 					<div class="col-xs-2">{{ form.latitude }}</div>
 					<div class="col-xs-1"></div>
 					<div class="col-xs-2">{{ form.latitude.errors }}</div>
 				</div>
 				<div class="row">    		
-	    		<div class="text-right col-xs-1"><label for="{{ form.longitude.id_for_label }}">Longitude:</label></div>
+	    		<div class="text-right col-xs-1"><label for="{{ form.longitude.id_for_label }}">Longitude (in degrees, decimal format):</label></div>
 					<div class="col-xs-2">{{ form.longitude }}</div>
 					<div class="col-xs-1"></div>
 					<div class="col-xs-2">{{ form.longitude.errors }}</div>
@@ -87,7 +87,7 @@
 					<div class="text-right col-xs-1"><label>Species (scientific name):</label></div>
 					<div class="col-xs-3"><input class="form-control" type="text" id="entrada_sp"></div>
 					<div class="col-xs-1"><button type="button" id="afegir_sp" onclick="addSp()"><span class="glyphicon glyphicon-plus"></span></button></div>
-					<div class="col-xs-1"><span>Click to add more species...</span></div>
+					<div class="col-xs-1"><span>Click to confirm species or to add more species...</span></div>
 					<div class="col-xs-2">{{ form.species.errors }}</div>    		
 					{{ form.species.as_hidden }}				
 				</div>			
