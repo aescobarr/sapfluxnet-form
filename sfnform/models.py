@@ -44,6 +44,19 @@ YES_NO_MAYBE_CHOICES = (
 	('no','No')
 )
 
+class DataUpload(models.Model):
+    email = models.EmailField(max_length=50)
+    site_id = models.CharField(max_length=200)
+    metadata_spreadsheet_original_file = models.CharField(max_length=200)
+    metadata_spreadsheet_url = models.CharField(max_length=200)
+    metadata_spreadsheet_date_posted = models.DateTimeField('entry timestamp',null=True)
+    sapflow_original_file = models.CharField(max_length=200)
+    sapflow_url = models.CharField(max_length=200)
+    sapflow_date_posted = models.DateTimeField('entry timestamp',null=True)
+    envdata_original_file = models.CharField(max_length=200)
+    envdata_url = models.CharField(max_length=200)
+    envdata_date_posted = models.DateTimeField('entry timestamp',null=True)
+
 # Create your models here.
 class MetadataForm(models.Model):
 	first_name = models.CharField(max_length=40)
