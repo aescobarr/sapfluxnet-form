@@ -79,7 +79,7 @@ class MetadataFormForm(ModelForm):
 			'latitude',
 			'longitude',
 			'growth_condition',
-			'species',			
+			'species',
 			'aprox_years_growing_seasons',
 			'aprox_numbers_tree_species',
 			'sap_flow_method',

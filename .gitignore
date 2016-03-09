@@ -1,6 +1,9 @@
 # Settings file
 sapfluxnet/settings.py
 
+#pycharm project settings
+.idea/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
