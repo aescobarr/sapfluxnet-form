@@ -1,7 +1,6 @@
-from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from forms import MetadataFormForm
+from forms import MetadataFormForm,DataUploadForm
 from datetime import datetime
 
 # Create your views here.
@@ -29,3 +28,16 @@ def built_form(request):
 	else:
 		form = MetadataFormForm()
 	return render(request, 'sfnform/form.html', {'form': form})
+
+def upload_form(request):
+	if request.method == 'POST':
+		form = DataUploadForm(request.POST, request.FILES)
+		# check whether it's valid:
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect(reverse('thanks'))
+	# if a GET (or any other method) we'll create a blank form
+	else:
+		form = DataUploadForm()
+	return render(request, 'sfnform/duform.html', {'form': form})
+

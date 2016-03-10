@@ -1,4 +1,5 @@
 from django.db import models
+from .validators import validate_file_extension,validate_file_extension_csv
 
 
 GROWTH_CONDITION_CHOICES = (
@@ -45,15 +46,11 @@ YES_NO_MAYBE_CHOICES = (
 class DataUpload(models.Model):
     email = models.EmailField(max_length=50)
     site_id = models.CharField(max_length=200)
-    metadata_spreadsheet_original_file = models.CharField(max_length=200)
-    metadata_spreadsheet_url = models.CharField(max_length=200)
-    metadata_spreadsheet_date_posted = models.DateTimeField('entry timestamp',null=True)
-    sapflow_original_file = models.CharField(max_length=200)
-    sapflow_url = models.CharField(max_length=200)
-    sapflow_date_posted = models.DateTimeField('entry timestamp',null=True)
-    envdata_original_file = models.CharField(max_length=200)
-    envdata_url = models.CharField(max_length=200)
-    envdata_date_posted = models.DateTimeField('entry timestamp',null=True)
+    metadata_spreadsheet = models.FileField(validators=[validate_file_extension])
+    sapflow_file = models.FileField(null=True,validators=[validate_file_extension_csv])
+    sapflow_included = models.BooleanField(default=False)
+    envdata_file = models.FileField(null=True,validators=[validate_file_extension_csv])
+    envdata_included = models.BooleanField(default=False)
 
 # Create your models here.
 class MetadataForm(models.Model):

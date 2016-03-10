@@ -1,6 +1,32 @@
-from django.forms import ModelForm, Textarea, TextInput, Select, EmailInput, NumberInput
+from django.forms import ModelForm, Textarea, TextInput, Select, EmailInput, NumberInput, FileInput, CheckboxInput
 from captcha.fields import CaptchaField
-from sfnform.models import MetadataForm
+from sfnform.models import MetadataForm, DataUpload
+from file_resubmit.admin import AdminResubmitFileWidget
+
+class DataUploadForm(ModelForm):
+    captcha = CaptchaField()
+    class Meta:
+        model = DataUpload
+        fields = [
+            'email',
+            'site_id',
+            'metadata_spreadsheet',
+            'sapflow_file',
+            'sapflow_included',
+            'envdata_file',
+            'envdata_included',
+        ]
+        widgets = {
+            'metadata_spreadsheet' : AdminResubmitFileWidget,
+			'envdata_file' :  FileInput(),
+            'sapflow_file' : FileInput(),
+            'sapflow_included' : CheckboxInput(),
+            'envdata_included' : CheckboxInput(),
+        }
+    def __init__(self, *args, **kwargs):
+        super(DataUploadForm, self).__init__(*args, **kwargs)
+        self.fields['sapflow_file'].required = False
+        self.fields['envdata_file'].required = False
 
 class MetadataFormForm(ModelForm):
 	captcha = CaptchaField()

@@ -1,0 +1,77 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>SAPFLUXNET form</title>
+		<link href="{% static 'sfnform/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+		<link href="{% static 'sfnform/base.css' %}" rel="stylesheet" media="screen">
+		<link rel="shortcut icon" type="image/png" href="{% static 'sfnform/media/fluxnet.ico' %}"/>
+	</head>
+	<body>
+		<div class="page-header">
+        <img class="img-responsive" src="{% static 'sfnform/media/fluxnet_logo_2.jpg' %}">
+		</div>
+		<h1>SAPFLUXNET: A global database of sap flow measurements</h1>
+		<h2>SAPFLUXNET Data Upload Form</h2>
+		<ul>
+            <li>SAPFLUXNET is an initiative aiming at compiling a global database of sap flow measurements in plants led by CREAF and an international team of researchers. The main goal of SAPFLUXNET is to advance in the scientific understanding of the ecological factors driving plant transpiration across the globe. Please see <a href="#">here</a> for more information about the project.</li>
+            <li>We invite the sap flow community worldwide to contribute with datasets to SAPFLUXNET. The basic requirements for data contribution are:
+                <ul>
+                    <li>Whole-plant sap flow time series must have been measured during at least one year/growing season, ideally at sub-daily resolution.</li>
+                    <li>The experimental site must be a field setting (including orchards, but excluding studies in greenhouses and in potted plants).</li>
+                    <li>Site- and tree-level metadata must be provided, meeting the minimum requirements specified in the metadata spreadsheet.</li>
+                    <li>Ancillary time series data must include basic meteorological monitoring spanning the entire duration of the sap flow measuring period.</li>
+                </ul>
+            </li>
+			<li>The preferred way to submit your data is using the SAPFLUXNET data upload form below. We will also accept data sent by email to the address sapfluxnet@creaf.uab.cat. TODO: specify a subject for the email.</li>
+            <li>See <a href="#">here</a> for detailed instructions on how to prepare your data.</li>
+		</ul>
+		<!--<form action="/form/" method="post">-->
+		<form action="{% url 'uploadform' %}" method="post" enctype="multipart/form-data">
+			<div class="container-fluid">
+				{% csrf_token %}			
+				<!--{{ form.as_p }}-->
+                <div class="row">
+					<div class="text-right col-xs-2"><label for="{{ form.email.id_for_label }}">Contact email:</label></div>
+	    		    <div class="col-xs-3">{{ form.email }}</div>
+					<div class="col-xs-2">{{ form.email.errors }}</div>
+				</div>
+                <div class="row">
+					<div class="text-right col-xs-2"><label for="{{ form.site_id.id_for_label }}">Combined site-stand ID: Paste here the 'st_si_id cell' from the metadata form:</label></div>
+	    		    <div class="col-xs-3">{{ form.site_id }}</div>
+					<div class="col-xs-2">{{ form.site_id.errors }}</div>
+				</div>
+                <div class="row">
+					<div class="text-right col-xs-2"><label for="{{ form.metadata_spreadsheet.id_for_label }}">Metadata spreadsheet (.ods, .xls, .xlsx) Template spreadsheets and the instructions to fill them in are <a href="#">here</a>:</label></div>
+	    		    <div id="metadata_file" class="col-xs-3">{{ form.metadata_spreadsheet }}</div>
+					<div class="col-xs-2">{{ form.metadata_spreadsheet.errors }}</div>
+				</div>
+				<div class="row">
+					<div class="text-right col-xs-2"><label for="{{ form.sapflow_file.id_for_label }}">Sap flow data file (.csv):</label></div>
+                    <div class="col-xs-1">{{ form.sapflow_included }} <label>Click here if sap flow time series are already included in the metadata spreadsheet</label></div>
+	    		    <div id="sapflow_file" class="col-xs-2">{{ form.sapflow_file }}</div>
+					<div class="col-xs-2">{{ form.sapflow_file.errors }}</div>
+				</div>
+				<div class="row">
+					<div class="text-right col-xs-2"><label for="{{ form.envdata_file.id_for_label }}">Environmental data file (.csv):</label></div>
+                    <div class="col-xs-1">{{ form.envdata_included }} <label>Click here if environmental data time series are already included in the metadata spreadsheet</label></div>
+	    		    <div id="envdata_file" class="col-xs-2">{{ form.envdata_file }}</div>
+					<div class="col-xs-2">{{ form.envdata_file.errors }}</div>
+				</div>
+				<div class="text-right col-xs-2"><label for="{{ form.captcha.id_for_label }}">Please type the characters you see in the picture:</label></div>
+					<div class="col-xs-3">{{ form.captcha }}</div>
+					<div class="col-xs-2">{{ form.captcha.errors }}</div>
+				</div>
+				<div class="sendbutton row">
+					<input class="col-xs-2 col-xs-offset-1 btn btn-primary" type="submit" value="Send/Save">
+				</div>
+			</div>
+		</form>
+	<!-- jQuery -->     
+  <script src="{% static 'sfnform/bootstrap/js/jquery.js' %}"></script>
+  <!-- Bootstrap Core JavaScript -->    
+  <script src="{% static 'sfnform/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- Species mini form functions -->
+  <script src="{% static 'sfnform/javascript/form_upload.js' %}"></script>
+	</body>
+</html>
