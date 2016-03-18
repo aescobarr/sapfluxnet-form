@@ -17,7 +17,7 @@ class DataUploadForm(ModelForm):
             'envdata_included',
         ]
         widgets = {
-            'metadata_spreadsheet' : AdminResubmitFileWidget,
+            'metadata_spreadsheet' : FileInput(),
 			'envdata_file' :  FileInput(),
             'sapflow_file' : FileInput(),
             'sapflow_included' : CheckboxInput(),
