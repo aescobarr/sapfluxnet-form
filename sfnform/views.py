@@ -47,4 +47,4 @@ def upload_form(request):
     # if a GET (or any other method) we'll create a blank form
     else:
         form = DataUploadForm()
-        return render(request, 'sfnform/duform.html', {'form': form})
+    return render(request, 'sfnform/duform.html', {'form': form})
