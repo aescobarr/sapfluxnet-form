@@ -13,20 +13,26 @@
 		</div>
 		<h1>SAPFLUXNET: A global database of sap flow measurements</h1>
 		<h2>SAPFLUXNET Data Upload Form</h2>
+		<p>SAPFLUXNET is an initiative aiming at compiling a <strong>global database of sap flow measurements</strong> in plants led by CREAF and an international team of researchers.</p>
+		<p>The main goal of SAPFLUXNET is to advance in the scientific understanding of the ecological factors driving plant transpiration across the globe.</p>
+		<p>Please see <a href="https://github.com/sapfluxnet/sapfluxnet-public/wiki#sapfluxnet-wiki">the project wiki</a> for more information about the project.</p>
+		<h3>Useful links</h3>
+		<p>In order to prepare data adequately, contributors are encouraged to read carefully the following information:</p>
+		<ol>
+			<li><a href="https://github.com/sapfluxnet/sapfluxnet-public/wiki/Data-Requirements#data-requirements">Data requirements</a></li>
+			<li><a href="https://github.com/sapfluxnet/sapfluxnet-public/wiki/Data-Submission-Guidelines">Data submission guidelines</a></li>
+			<li><a href="https://github.com/sapfluxnet/sapfluxnet-public/wiki/Data-Policy#sapfluxnet-data-policy-and-intellectual-property-guidelines">Data policy</a></li>
+		</ol>
+		<p>Template files for data submission can be found <a href="https://github.com/sapfluxnet/sapfluxnet-public/wiki/Templates">here</a></p>
+		<h3>Upload Data Quick Instructions</h3>
 		<ul>
-            <li>SAPFLUXNET is an initiative aiming at compiling a global database of sap flow measurements in plants led by CREAF and an international team of researchers. The main goal of SAPFLUXNET is to advance in the scientific understanding of the ecological factors driving plant transpiration across the globe. Please see <a href="#">here</a> for more information about the project.</li>
-            <li>We invite the sap flow community worldwide to contribute with datasets to SAPFLUXNET. The basic requirements for data contribution are:
-                <ul>
-                    <li>Whole-plant sap flow time series must have been measured during at least one year/growing season, ideally at sub-daily resolution.</li>
-                    <li>The experimental site must be a field setting (including orchards, but excluding studies in greenhouses and in potted plants).</li>
-                    <li>Site- and tree-level metadata must be provided, meeting the minimum requirements specified in the metadata spreadsheet.</li>
-                    <li>Ancillary time series data must include basic meteorological monitoring spanning the entire duration of the sap flow measuring period.</li>
-                </ul>
-            </li>
-			<li>The preferred way to submit your data is using the SAPFLUXNET data upload form below. We will also accept data sent by email to the address sapfluxnet@creaf.uab.cat. TODO: specify a subject for the email.</li>
-            <li>See <a href="#">here</a> for detailed instructions on how to prepare your data.</li>
+			<li>Fill in <code>email</code> and <code>site code</code> fields.</li>
+			<li>Select desired files to upload (metadata, sapflow data and environmental data).</li>
+			<li>Fill in the captcha box.</li>
+			<li>Press <code>Send/Save</code> button.</li>
 		</ul>
 		<!--<form action="/form/" method="post">-->
+		<h3>Upload Form</h3>
 		<form action="{% url 'uploadform' %}" method="post" enctype="multipart/form-data">
 			<div class="container-fluid">
 				{% csrf_token %}			
