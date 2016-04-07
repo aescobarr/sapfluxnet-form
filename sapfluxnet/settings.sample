@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'sfnform',
     'captcha',
+    'file_resubmit',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -70,7 +71,25 @@ TEMPLATES = [
     },
 ]
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'some_user@creaf.uab.cat'
+EMAIL_HOST_PASSWORD = 'some_password'
+DEFAULT_FROM_EMAIL = 'some_user@creaf.uab.cat'
+
+
 WSGI_APPLICATION = 'sapfluxnet.wsgi.application'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    },
+    "file_resubmit": {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        "LOCATION": './files'
+    },
+}
 
 
 # Database
@@ -79,9 +98,9 @@ WSGI_APPLICATION = 'sapfluxnet.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'your_database_name',
-        'USER': 'your_database_owner_user',
-        'PASSWORD': 'your_database_user_password',
+        'NAME': 'database_name',
+        'USER': 'user_name',
+        'PASSWORD': 'user_password',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }

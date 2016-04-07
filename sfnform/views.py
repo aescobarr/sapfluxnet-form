@@ -40,7 +40,8 @@ def upload_form(request):
         # check whether it's valid:
         if form.is_valid():
             metadata = form.save()
-            send_mail("[SAPFLUXNET] - Thanks for contributing!", "Your data file has been correctly stored in our servers.",
+            message_body = "Dear contributor,\n\nYour data files have been correctly stored in our server. We will get back to you\nto inform you about the progress in dataprocessing.\nThanks for contributing to SAPFLUXNET,\n\nthe SAPFLUXNET Team.\n"
+            send_mail("[SAPFLUXNET] - Thanks for contributing!", message_body,
               settings.DEFAULT_FROM_EMAIL, [metadata.email], fail_silently=False)
             return HttpResponseRedirect(reverse('thanks'))
 
