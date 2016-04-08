@@ -1,7 +1,6 @@
 from django.forms import ModelForm, Textarea, TextInput, Select, EmailInput, NumberInput, FileInput, CheckboxInput
 from captcha.fields import CaptchaField
 from sfnform.models import MetadataForm, DataUpload
-from file_resubmit.admin import AdminResubmitFileWidget
 
 class DataUploadForm(ModelForm):
     captcha = CaptchaField()
