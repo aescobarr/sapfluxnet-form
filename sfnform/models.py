@@ -46,10 +46,10 @@ YES_NO_MAYBE_CHOICES = (
 class DataUpload(models.Model):
     email = models.EmailField(max_length=50)
     site_id = models.CharField(max_length=200)
-    metadata_spreadsheet = models.FileField(upload_to='data/',validators=[validate_file_extension])
-    sapflow_file = models.FileField(upload_to='data/',null=True,validators=[validate_file_extension_csv])
+    metadata_spreadsheet = models.FileField(upload_to='/data/',validators=[validate_file_extension])
+    sapflow_file = models.FileField(upload_to='/data/',null=True,validators=[validate_file_extension_csv])
     sapflow_included = models.BooleanField(default=False)
-    envdata_file = models.FileField(upload_to='data/',null=True,validators=[validate_file_extension_csv])
+    envdata_file = models.FileField(upload_to='/data/',null=True,validators=[validate_file_extension_csv])
     envdata_included = models.BooleanField(default=False)
 
 # Create your models here.
