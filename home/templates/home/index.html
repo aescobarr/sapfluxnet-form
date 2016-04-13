@@ -33,7 +33,16 @@
       <nav id="nav">
         <ul>
           <li><a href="{% url 'uploadform' %}">Upload Form</a></li>
-          <li><a href="http://158.109.46.35:3838/preliminary_dashboard/">Preliminary Dashboard</a></li>
+          <li>
+            <a href="" class="icon fa-angle-down">Shiny Apps</a>
+            <ul>
+              {% for app in list %}
+                {% if app.is_showed %}
+                  <li><a href="{{ app.show_url }}">{{ app }}</a></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </li>
         </ul>
       </nav>
     </header>
@@ -49,18 +58,28 @@
       </div>
     </section>
 
-    <!-- Shiny Apps directory -->
+    <!-- Highlights -->
     <section id="shiny_dir" class="wrapper style2">
       <div class="container">
         <div class="row uniform">
-          {% for app in list %}
           <div class="4u 6u(2) 12u$(3)">
-            <section class="feature fa-bar-chart">
-              <h3> {{ app.shiny_name }} </h3>
-              <p> {{ app.show_desc }} </p>
+            <section class="feature fa-globe">
+              <h3> Global coverage </h3>
+              <p> Sap flow meaurements from around the globe </p>
             </section>
           </div>
-          {% endfor %}
+          <div class="4u 6u$(2) 12y$(3)">
+            <section class="feature fa-eye">
+              <h3> Data sharing and reuse </h3>
+              <p> Promoting analyses of great scientific relevance and impact and expanding the value of individual datasets </p>
+            </section>
+          </div>
+          <div class="4u$ 6u(2) 12u$(3)">
+            <section class="feature fa-area-chart">
+              <h3> Data analysis </h3>
+              <p> Reports and interactive analyses for each dataset as well as the global database </p>
+            </section>
+          </div>
         </div>
       </div>
     </section>
@@ -73,9 +92,16 @@
 					<li><a href="https://github.com/sapfluxnet/sapfluxnet-public/wiki/Data-Policy">Data Policy</a></li>
 					<li><a href="#">Contact</a></li>
 				</ul>
-				<span class="copyright">
-					&copy; Sapfluxnet Team. Design by <a href="http://www.html5webtemplates.co.uk">Responsive Web Templates</a>
-				</span>
+        <li>
+				  <span class="copyright">
+				  	&copy; Sapfluxnet Team. Design by <a href="http://www.html5webtemplates.co.uk">Responsive Web Templates</a>
+				  </span>
+        </li>
+        <li>
+          <span class="copyright">
+				  	The Sapfluxnet project is led by researchers at <a href="http://www.creaf.cat">CREAF</a>, and funded by the Spanish Ministry of Economy and Competitiveness through grant nº CGL2014-55883-JIN.</a>
+				  </span>
+        </li>
 			</footer>
 
   </body>
