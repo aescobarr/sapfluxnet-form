@@ -1,0 +1,82 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SAPFLUXNET Home</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="Home page for SAPFLUXNET project" />
+		<meta name="keywords" content="sap flow database global" />
+		<!--[if lte IE 8]><script src="home/css/ie/html5shiv.js"></script><![endif]-->
+		<script src="{% static 'home/js/jquery.min.js' %}"></script>
+		<script src="{% static 'home/js/jquery.dropotron.min.js' %}"></script>
+		<script src="{% static 'home/js/jquery.scrollgress.min.js' %}"></script>
+		<script src="{% static 'home/js/jquery.scrolly.min.js' %}"></script>
+		<script src="{% static 'home/js/jquery.slidertron.min.js' %}"></script>
+		<script src="{% static 'home/js/skel.min.js' %}"></script>
+		<script src="{% static 'home/js/skel-layers.min.js' %}"></script>
+		<script src="{% static 'home/js/init.js' %}"></script>
+    <noscript>
+		  <link rel="stylesheet" type="text/css" href="{% static 'home/css/skel.css' %}"/>
+		  <link rel="stylesheet" type="text/css" href="{% static 'home/css/style.css' %}"/>
+		  <link rel="stylesheet" type="text/css" href="{% static 'home/css/style-xlarge.css' %}"/>
+    </noscript>
+    <link rel="shortcut icon" type="image/png" href="{% static 'home/media/fluxnet.ico' %}"/>
+		<!--[if lte IE 9]><link rel="stylesheet" href="home/css/ie/v9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="home/css/ie/v8.css" /><![endif]-->
+	</head>
+
+  <body class="landing">
+
+    <!-- Header -->
+    <header id="header" class="alt skel-layers-fixed">
+      <h1><a href="{% url 'index' %}">SAPFLUXNET <span>Project</span></a></h1>
+      <nav id="nav">
+        <ul>
+          <li><a href="{% url 'uploadform' %}">Upload Form</a></li>
+          <li><a href="http://158.109.46.35:3838/preliminary_dashboard/">Preliminary Dashboard</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Banner -->
+    <section id="banner">
+      <div class="inner">
+        <h2>SAPFLUXNET Project</h2>
+        <p>A global database of sap flow measurements</p>
+        <ul class="actions">
+          <li><a href="https://github.com/sapfluxnet/sapfluxnet-public/wiki#sapfluxnet-wiki" class="button big scrolly">Learn More</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Shiny Apps directory -->
+    <section id="shiny_dir" class="wrapper style2">
+      <div class="container">
+        <div class="row uniform">
+          {% for app in list %}
+          <div class="4u 6u(2) 12u$(3)">
+            <section class="feature fa-bar-chart">
+              <h3> {{ app.shiny_name }} </h3>
+              <p> {{ app.show_desc }} </p>
+            </section>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+			<footer id="footer">
+				<ul class="menu">
+					<li><a href="https://github.com/sapfluxnet/sapfluxnet-public/wiki#sapfluxnet-wiki">Wiki</a></li>
+					<li><a href="https://github.com/sapfluxnet/sapfluxnet-public/wiki/Data-Submission-Guidelines">Data Submission Guidelines</a></li>
+					<li><a href="https://github.com/sapfluxnet/sapfluxnet-public/wiki/Data-Policy">Data Policy</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+				<span class="copyright">
+					&copy; Sapfluxnet Team. Design by <a href="http://www.html5webtemplates.co.uk">Responsive Web Templates</a>
+				</span>
+			</footer>
+
+  </body>
+</html>

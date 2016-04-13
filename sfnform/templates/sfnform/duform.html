@@ -35,7 +35,7 @@
 		<h3>Upload Form</h3>
 		<form action="{% url 'uploadform' %}" method="post" enctype="multipart/form-data">
 			<div class="container-fluid">
-				{% csrf_token %}			
+				{% csrf_token %}
 				<!--{{ form.as_p }}-->
                 <div class="row">
 					<div class="text-right col-xs-2"><label for="{{ form.email.id_for_label }}">Contact email:</label></div>
@@ -75,9 +75,9 @@
 				</div>
 			</div>
 		</form>
-	<!-- jQuery -->     
+	<!-- jQuery -->
   <script src="{% static 'sfnform/bootstrap/js/jquery.js' %}"></script>
-  <!-- Bootstrap Core JavaScript -->    
+  <!-- Bootstrap Core JavaScript -->
   <script src="{% static 'sfnform/bootstrap/js/bootstrap.min.js' %}"></script>
     <!-- Species mini form functions -->
   <script src="{% static 'sfnform/javascript/form_upload.js' %}"></script>

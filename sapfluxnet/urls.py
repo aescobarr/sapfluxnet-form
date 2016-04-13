@@ -16,13 +16,15 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.views.generic import TemplateView
 from sfnform import views as sfnform_views
+from home import views as home_views
 
 
 #from . import views
 
-urlpatterns = [	
+urlpatterns = [
 	url(r'^form/$', sfnform_views.built_form, name='form'),
 	url(r'^uploadform/$', sfnform_views.upload_form, name='uploadform'),
 	url(r'^thanks/$', TemplateView.as_view(template_name="sfnform/thanks.html"), name='thanks'),
 	url(r'^captcha/', include('captcha.urls')),
+    url(r'^$', home_views.index, name='index'),
 ]
