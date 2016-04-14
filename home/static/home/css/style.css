@@ -1237,9 +1237,9 @@
 		background-repeat: repeat,						no-repeat;
 		background-size: auto,						cover;
 		color: #29211F;
-		padding: 16em 0;
+		padding: 12em 0;
 		position: relative;
-		text-align: center
+		text-align: center;
 	}
 
 		#banner:after {
@@ -1270,7 +1270,6 @@
 		#banner .inner {
 			position: relative;
 			z-index: 2;
-			height: 125px;
 		}
 
 		#banner .logos {

@@ -17,3 +17,17 @@ class ShinyApp(models.Model):
         return self.shiny_description
     def show_url(self):
         return self.shiny_address
+
+class SfnTeam(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200, default='')
+    web = models.URLField(max_length=200, default='')
+    affil = models.CharField(max_length=200, default='CREAF')
+    def __str__(self):
+        return self.name
+    def getEmail(self):
+        return self.email
+    def getWeb(self):
+        return self.web
+    def getAffil(self):
+        return self.affil

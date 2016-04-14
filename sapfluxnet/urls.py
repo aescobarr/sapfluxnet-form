@@ -27,4 +27,5 @@ urlpatterns = [
 	url(r'^thanks/$', TemplateView.as_view(template_name="sfnform/thanks.html"), name='thanks'),
 	url(r'^captcha/', include('captcha.urls')),
     url(r'^$', home_views.index, name='index'),
+    url(r'^team/$', home_views.team, name='team'),
 ]
