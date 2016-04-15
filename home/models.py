@@ -23,6 +23,7 @@ class SfnTeam(models.Model):
     email = models.EmailField(max_length=200, default='')
     web = models.URLField(max_length=200, default='')
     affil = models.CharField(max_length=200, default='CREAF')
+    courtesy = models.CharField(max_length=200, default='')
     def __str__(self):
         return self.name
     def getEmail(self):
@@ -31,3 +32,5 @@ class SfnTeam(models.Model):
         return self.web
     def getAffil(self):
         return self.affil
+    def getCourtesy(self):
+        return self.courtesy

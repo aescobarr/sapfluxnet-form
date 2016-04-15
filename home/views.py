@@ -11,5 +11,5 @@ def index(request):
 
 # team view
 def team(request):
-    team_list = SfnTeam.objects.all()
+    team_list = SfnTeam.objects.all().order_by('id')
     return render(request, 'home/team.html', {'team_list': team_list})

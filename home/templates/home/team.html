@@ -60,7 +60,9 @@
                 <ul class="alt">
                   {% for member in team_list %}
                     {% if member.getAffil == 'CREAF' %}
-                      <li>{{ member }}. {{ member.getAffil }}. <a href="{{ member.getWeb }}">Web</a></li>
+                      <li>
+                        {{ member }}.{% if member.getCourtesy == 'PI' %}<b> {{ member.getCourtesy }}</b>. {% endif %} {{ member.getAffil }}. <a href="{{ member.getWeb }}">Web</a>
+                      </li>
                     {% endif %}
                   {% endfor %}
                 </ul>
