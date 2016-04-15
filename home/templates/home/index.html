@@ -7,6 +7,15 @@
 		<meta name="description" content="Home page for SAPFLUXNET project" />
 		<meta name="keywords" content="sap flow database global" />
 		<!--[if lte IE 8]><script src="home/css/ie/html5shiv.js"></script><![endif]-->
+    <!-- Script to acces css files from js files: -->
+    <script>
+      style  = "{% static 'home/css/style.css' %}";
+      xlarge  = "{% static 'home/css/style-xlarge.css' %}";
+      large  = "{% static 'home/css/style-large.css' %}";
+      medium  = "{% static 'home/css/style-medium.css' %}";
+      small  = "{% static 'home/css/style-small.css' %}";
+      xsmall  = "{% static 'home/css/style-xsmall.css' %}";
+    </script>
 		<script src="{% static 'home/js/jquery.min.js' %}"></script>
 		<script src="{% static 'home/js/jquery.dropotron.min.js' %}"></script>
 		<script src="{% static 'home/js/jquery.scrollgress.min.js' %}"></script>
@@ -32,6 +41,7 @@
       <h1><a href="{% url 'index' %}">SAPFLUXNET <span>Project</span></a></h1>
       <nav id="nav">
         <ul>
+          <li><a href="{% url 'team' %}">Team Members</a></li>
           <li><a href="{% url 'uploadform' %}">Upload Form</a></li>
           <li>
             <a href="" class="icon fa-angle-down">Shiny Apps</a>
@@ -90,7 +100,7 @@
     <!-- Footer -->
 			<footer id="footer">
         <ul class="icons">
-					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="https://github.com/sapfluxnet/sapfluxnet-public" class="icon fa-github"><span class="label">Github</span></a></li>
 					<li><a href="mailto:sapfluxnet@creaf.uab.cat" class="icon fa-envelope"><span class="label">Envelope</span></a></li>
 				</ul>
 				<ul class="menu">

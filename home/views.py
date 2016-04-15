@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import ShinyApp
+from .models import ShinyApp,SfnTeam
 from django.conf import settings
 
 # Create your views here.

@@ -1,0 +1,102 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>SAPFLUXNET Team</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="Members of SAPFLUXNET Team" />
+		<meta name="keywords" content="sap flow database global" />
+    <!--[if lte IE 8]><script src="home/css/ie/html5shiv.js"></script><![endif]-->
+    <!-- Script to acces css files from js files: -->
+    <script>
+      style  = "{% static 'home/css/style.css' %}";
+      xlarge  = "{% static 'home/css/style-xlarge.css' %}";
+      large  = "{% static 'home/css/style-large.css' %}";
+      medium  = "{% static 'home/css/style-medium.css' %}";
+      small  = "{% static 'home/css/style-small.css' %}";
+      xsmall  = "{% static 'home/css/style-xsmall.css' %}";
+    </script>
+		<script src="{% static 'home/js/jquery.min.js' %}"></script>
+		<script src="{% static 'home/js/jquery.dropotron.min.js' %}"></script>
+		<script src="{% static 'home/js/jquery.scrollgress.min.js' %}"></script>
+		<script src="{% static 'home/js/jquery.scrolly.min.js' %}"></script>
+		<script src="{% static 'home/js/jquery.slidertron.min.js' %}"></script>
+		<script src="{% static 'home/js/skel.min.js' %}"></script>
+		<script src="{% static 'home/js/skel-layers.min.js' %}"></script>
+		<script src="{% static 'home/js/init.js' %}"></script>
+    <noscript>
+		  <link rel="stylesheet" type="text/css" href="{% static 'home/css/skel.css' %}"/>
+		  <link rel="stylesheet" type="text/css" href="{% static 'home/css/style.css' %}"/>
+		  <link rel="stylesheet" type="text/css" href="{% static 'home/css/style-xlarge.css' %}"/>
+    </noscript>
+    <link rel="shortcut icon" type="image/png" href="{% static 'home/media/fluxnet.ico' %}"/>
+		<!--[if lte IE 9]><link rel="stylesheet" href="home/css/ie/v9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="home/css/ie/v8.css" /><![endif]-->
+	</head>
+
+  <body class="landing">
+
+    <!-- Header -->
+    <header id="header" class="alt skel-layers-fixed">
+      <h1><a href="{% url 'index' %}">SAPFLUXNET <span>Project</span></a></h1>
+    </header>
+
+    <!-- Main -->
+    <section id="main" class="wrapper style1">
+      <header class="major">
+        <h2>Sapfluxnet team members</h2>
+      </header>
+      <div class="container">
+
+        <!-- Content -->
+        <section id="content">
+
+          <!-- CREAF members -->
+          <section>
+            <div class="row">
+              <div class="6u 12u(2)">
+                <h3>Project Members at CREAF</h3>
+                <ul class="alt">
+                  {% for member in team_list %}
+                    {% if member.getAffil == 'CREAF' %}
+                      <li>{{ member }}. {{ member.getAffil }}. <a href="{{ member.getWeb }}">Web</a></li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+              <!-- International Team -->
+              <div class="6u 12u(2)">
+                <h3>International Team</h3>
+                <ul class="alt">
+                  {% for member in team_list %}
+                    {% if member.getAffil != 'CREAF' %}
+                      <li>{{ member }}. {{ member.getAffil }}. <a href="{{ member.getWeb }}">Web</a></li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+      <!-- Footer -->
+  			<footer id="footer">
+          <ul class="icons">
+  					<li><a href="https://github.com/sapfluxnet/sapfluxnet-public" class="icon fa-github"><span class="label">Github</span></a></li>
+  					<li><a href="mailto:sapfluxnet@creaf.uab.cat" class="icon fa-envelope"><span class="label">Envelope</span></a></li>
+  				</ul>
+  				<ul class="menu">
+  					<li><a href="https://github.com/sapfluxnet/sapfluxnet-public/wiki#sapfluxnet-wiki">Wiki</a></li>
+  					<li><a href="https://github.com/sapfluxnet/sapfluxnet-public/wiki/Data-Submission-Guidelines">Data Submission Guidelines</a></li>
+  					<li><a href="https://github.com/sapfluxnet/sapfluxnet-public/wiki/Data-Policy">Data Policy</a></li>
+  				</ul>
+          <span class="copyright">
+            The Sapfluxnet project is led by researchers at <a href="http://www.creaf.cat">CREAF</a>, and funded by the Spanish Ministry of Economy and Competitiveness through grant nº CGL2014-55883-JIN.</a>
+  				</span>
+          <span class="copyright">
+  				  	Web template by <a href="http://www.html5webtemplates.co.uk">Responsive Web Templates</a>
+  				</span>
+  			</footer>
+  </body>
+</html>
