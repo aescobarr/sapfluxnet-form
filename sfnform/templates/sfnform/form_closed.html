@@ -1,0 +1,25 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>SAPFLUXNET form</title>
+		<link href="{% static 'sfnform/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+		<link href="{% static 'sfnform/base.css' %}" rel="stylesheet" media="screen">
+		<link rel="shortcut icon" type="image/png" href="{% static 'sfnform/media/fluxnet.ico' %}"/>
+	</head>
+	<body>
+		<div class="page-header">
+  		<img class="img-responsive" src="{% static 'sfnform/media/fluxnet_logo_2.jpg' %}">
+		</div>
+		<h1>SAPFLUXNET: A global database of sap flow measurements</h1>
+		<h2>Meta-data portal</h2>		
+		<h3>The Meta-data collection phase is closed. Please head <a href="{% url 'uploadform' %}">here</a> to upload data.</h3>
+	<!-- jQuery -->     
+  <script src="{% static 'sfnform/bootstrap/js/jquery.js' %}"></script>
+
+  <!-- Bootstrap Core JavaScript -->    
+  <script src="{% static 'sfnform/bootstrap/js/bootstrap.min.js' %}"></script>
+  <!-- Species mini form functions -->
+  <script src="{% static 'sfnform/javascript/form_species.js' %}"></script>  
+	</body>
+</html>
