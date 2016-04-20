@@ -62,3 +62,5 @@ docs/_build/
 # PyBuilder
 target/
 
+# Collected static folder
+static/
