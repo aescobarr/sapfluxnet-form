@@ -22,10 +22,10 @@ from home import views as home_views
 #from . import views
 
 urlpatterns = [
-	url(r'^form/$', sfnform_views.built_form, name='form'),
-	url(r'^uploadform/$', sfnform_views.upload_form, name='uploadform'),
-	url(r'^thanks/$', TemplateView.as_view(template_name="sfnform/thanks.html"), name='thanks'),
-	url(r'^captcha/', include('captcha.urls')),
+    url(r'^form/$', sfnform_views.built_form, name='form'),
+    url(r'^uploadform/$', sfnform_views.upload_form, name='uploadform'),
+    url(r'^thanks/$', TemplateView.as_view(template_name="sfnform/thanks.html"), name='thanks'),
+    url(r'^captcha/', include('captcha.urls')),
     url(r'^$', home_views.index, name='index'),
     url(r'^team/$', home_views.team, name='team'),
 ]
