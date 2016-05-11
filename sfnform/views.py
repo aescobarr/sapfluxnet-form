@@ -43,8 +43,10 @@ def upload_form(request):
         if form.is_valid():
             metadata = form.save()
             message_body = "Dear contributor,\n\nYour data files have been correctly stored in our server. We will get back to you\nto inform you about the progress in dataprocessing.\nThanks for contributing to SAPFLUXNET,\n\nthe SAPFLUXNET Team.\n"
-            send_mail("[SAPFLUXNET] - Thanks for contributing!", message_body,
-              settings.DEFAULT_FROM_EMAIL, [metadata.email], fail_silently=False)
+            if settings.BCC_EMAIL and settings.BCC_EMAIL!='':
+                send_mail("[SAPFLUXNET] - Thanks for contributing!", message_body, settings.DEFAULT_FROM_EMAIL,[metadata.email,settings.BCC_EMAIL], fail_silently=False)
+            else:
+                send_mail("[SAPFLUXNET] - Thanks for contributing!", message_body, settings.DEFAULT_FROM_EMAIL,[metadata.email], fail_silently=False)
             return HttpResponseRedirect(reverse('thanks'))
 
     # if a GET (or any other method) we'll create a blank form

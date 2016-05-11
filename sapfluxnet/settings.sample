@@ -40,7 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'sfnform',
     'captcha',
-    'file_resubmit',
+    'home.apps.HomeConfig',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -78,7 +78,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'some_user@creaf.uab.cat'
 EMAIL_HOST_PASSWORD = 'some_password'
 DEFAULT_FROM_EMAIL = 'some_user@creaf.uab.cat'
-
+#send copy to address - remove line entirely to not send copy
+BCC_EMAIL = 'some_other_user@creaf.uab.cat'
 
 WSGI_APPLICATION = 'sapfluxnet.wsgi.application'
 
